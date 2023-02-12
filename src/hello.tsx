@@ -1,6 +1,12 @@
 import React from 'react'
-import {Alert} from 'antd';
+import {Alert, message} from 'antd';
 
 export default function Hello() {
-  return <Alert message={'Hello'}/>
+    function showMessage(text: string) {
+        message.destroy();
+        // FIXME we have to put 'message.info' in a 'setTimeout', otherwise it doesn't show on the first click
+        setTimeout(() => message.info(text), 0)
+    }
+
+    return <button onClick={() => showMessage('Hello')}>Show message</button>
 };
